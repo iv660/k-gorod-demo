@@ -21,7 +21,7 @@ class m190524_191356_add_default_admin extends Migration
         $user->setPassword('admin');
         $user->status = User::STATUS_ACTIVE;
         if (!$user->save()) {
-            echo Yii::t('kgd', 'Cannot create an admin user account.');
+            echo Yii::t('app', 'Cannot create an admin user account.');
             echo "\n";
             return false;
         }
@@ -31,13 +31,13 @@ class m190524_191356_add_default_admin extends Migration
     {
         $user = User::findOne(['username' => 'admin']);
         if (is_null($user)){
-            echo Yii::t('kgd', 'Cannot find the admin user account.');
+            echo Yii::t('app', 'Cannot find the admin user account.');
             echo "\n";
             return false;
         }
         
         if ($user->delete() === false) {
-            echo Yii::t('kgd', 'Cannot delete the admin user account.');
+            echo Yii::t('app', 'Cannot delete the admin user account.');
             echo "\n";
             return false;
         }

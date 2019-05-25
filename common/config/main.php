@@ -12,12 +12,12 @@ return [
         ],
         'i18n' => [
             'translations' => [
-                'kgd*' => [
+                'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     //'basePath' => '@app/messages',
                     //'sourceLanguage' => 'en-US',
                     'fileMap' => [
-                        'kgd' => 'kgd.php',
+                        'app' => 'app.php',
                     ],
                 ],
             ],

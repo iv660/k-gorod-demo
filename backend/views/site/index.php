@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = Yii::t('kgd', 'My Yii Application Backend');
+$this->title = Yii::t('app', 'My Yii Application Backend');
 ?>
 <div class="site-index">
 
