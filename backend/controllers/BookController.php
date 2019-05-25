@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Book;
+use backend\models\Chapter;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -54,6 +55,9 @@ class BookController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $chapterDataProvider = new ActiveDataProvider([
+            'query' => $model->getChapters(),
+        ]);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -61,6 +65,7 @@ class BookController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'chapterDataProvider' => $chapterDataProvider,
         ]);
     }
 

@@ -34,6 +34,13 @@ class Chapter extends \yii\db\ActiveRecord
             [['name', 'page_from', 'page_to'], 'required'],
             [['name'], 'string'],
             [['page_from', 'page_to'], 'integer'],
+            [
+                ['page_from'], 
+                'compare', 
+                'compareAttribute' => 'page_to', 
+                'operator' => '<=', 
+                'type' => 'number', 
+            ]
         ];
     }
 
@@ -44,7 +51,7 @@ class Chapter extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
+            'name' => Yii::t('app', 'Title'),
             'page_from' => Yii::t('app', 'Page From'),
             'page_to' => Yii::t('app', 'Page To'),
         ];

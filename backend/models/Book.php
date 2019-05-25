@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use backend\models\Chapter;
 
 /**
  * This is the model class for table "{{%Book}}".
@@ -58,6 +59,6 @@ class Book extends \yii\db\ActiveRecord
      */
     public function getChapters()
     {
-        return $this->hasMany(Chapters::className(), ['id' => 'Chapters_id'])->viaTable('{{%book_chapters}}', ['Book_id' => 'id']);
+        return $this->hasMany(Chapter::className(), ['id' => 'Chapters_id'])->viaTable('{{%book_chapters}}', ['Book_id' => 'id']);
     }
 }
