@@ -23,8 +23,6 @@ $this->title = Yii::t('app', 'Chapters');
             'data-link' => Url::to(['chapter/update']),
         ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
             'name:ntext',
         ],
     ]); ?>

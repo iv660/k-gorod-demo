@@ -19,6 +19,8 @@ class m190524_191356_add_default_admin extends Migration
         
         $user->username = 'admin';
         $user->setPassword('admin');
+        $user->auth_key = '';
+        $user->email = '';
         $user->status = User::STATUS_ACTIVE;
         if (!$user->save()) {
             echo Yii::t('app', 'Cannot create an admin user account.');
