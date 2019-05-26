@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'name')->textInput() ?>
 
     <?= $form->field($model, 'page_from')->textInput() ?>
 
@@ -24,42 +24,4 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
     
-    <?php
-    if (Yii::$app->request->isAjax) {
-        /* $this->registerJs(
-                "$('.chapter-form form').submit(function() {
-                    var link = $(this).attr('action');
-                    if (link) {
-                        $.ajax(
-                            link,
-                            {
-                                data: $(this).serialize(),
-                                success: function (data) {
-                                    var oData = JSON.parse(data);
-                                    alert(oData.result); 
-                                    if (!oData && oData.result != 'OK') {
-                                        // Display data
-                                        $('.modal-body').html(data);
-                                    } else {
-                                        // Close modal window
-                                        $('.modal-body').html('');
-                                        $('#chapter-modal').modal('toggle');
-                                        $.pjax.reload('#p0');
-                                    }    
-                                },
-                                method: 'post',
-                            }
-                        );
-                    }
-                    
-                    return false;
-                });
-
-    "
-            ); */
-    }
-    ?>
-    
-    
-
 </div>
