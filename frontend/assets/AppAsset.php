@@ -15,6 +15,9 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'https://unpkg.com/react@16/umd/react.development.js',
+        'https://unpkg.com/react-dom@16/umd/react-dom.development.js',
+        'https://unpkg.com/babel-standalone@6/babel.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
