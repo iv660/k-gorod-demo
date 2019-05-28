@@ -17,8 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cannot create an admin user account.' => 'Не удается создать учетную запись администратора.',
-    'Cannot delete the admin user account.' => 'Не удается удалить учетную запись администратора (admin).',
-    'Cannot find the admin user account.' => 'Не удается найти учетную запись администратора (admin).',
-    'Dummy Book #{number} (no chapters!)' => 'Образец книги {number} (без глав!)',
+    'Books Directory' => 'Список книг',
+    'Loading...' => 'Загрузка...',
 ];

@@ -35,10 +35,9 @@ class Books extends React.Component {
         
         this.state = {
             data: {items: []},
+            error: '',
         };
-//        this.setState({data: {items: props.items}}),
         this.loadPageData();
-//        this.handleChange = this.handleChange.bind(this);
     }
     
     /**
@@ -51,19 +50,55 @@ class Books extends React.Component {
         var apiUrl = new URL(this.props.config.api_url);
         
         apiUrl.searchParams.append('page', this.page);
-        console.log(apiUrl);
         
         $.ajax(apiUrl.toString(), requestParams).done((function (data, textStatus, xhr){
             var stateData = this.state.data;
-            console.log(data);
             stateData.items = data;
-            this.setState({data: stateData});
+            this.pageCount = xhr.getResponseHeader('x-pagination-page-count');
+            this.setData(stateData);
+            this.resetError();
+        }).bind(this))
+        .fail((function (xhr, textStatus, error) {
+            this.setError(error);
         }).bind(this));
     }
     
+    /**
+     * Sets the state data object.
+     * 
+     * @param {Object} data
+     * @returns {undefined}
+     */
+    setData (data) {
+        this.setState({data: data});
+    }
+    
+    /**
+     * Sets the error state.
+     * 
+     * @param {string} error
+     * @returns {undefined}
+     */
+    setError (error) {
+        this.setState({error: error})
+    }
+    
+    /**
+     * Clears the error state.
+     * 
+     * @returns {undefined}
+     */
+    resetError () {
+        this.setError('');
+    }
+    
+    /**
+     * Handler for a click on a page select button.
+     * 
+     * @param {Object} event Event data
+     * @returns {undefined}
+     */
     changePageHandler (event) {
-        console.log('changePageHandler()');
-        console.log(event);
         
         event.data.container.page = $(event.currentTarget).data('page');
         event.data.container.loadPageData();
@@ -75,6 +110,10 @@ class Books extends React.Component {
      * @returns string
      */
     render () {
+        if (this.state.error !== '') {
+            return (<div>Cannot get data from the API: <code>{this.state.error}</code></div>);
+        }
+        
         return (
             <div>
                 <ul>{ this.state.data.items.map((function(m, index){
@@ -83,17 +122,17 @@ class Books extends React.Component {
         
                 }).bind(this)) }
                 </ul>
-                <Pagination page_count="7" list_id="pagination-list" page={this.page} />
+                <Pagination page_count={this.pageCount} list_id="pagination-list" page={this.page} />
             </div>
         );
     }
     
     /**
+     * Add the event handler as soon as the component is mounted.
      * 
      * @returns {undefined}
      */
     componentDidMount () {
-        console.log('Mount complete.');
         
         var $this = $(ReactDOM.findDOMNode(this));
         
@@ -124,35 +163,32 @@ class Pagination extends React.Component {
      */    
     getPagesArray () {
         var pages = [];
-        console.log('getPagesArray()');
-        console.log('Pages: ' + this.props.page_count);
         var i;
         for (i = 1; i <= this.props.page_count; i++)  {
-            console.log('Pushing ' + i);
             pages.push(i);
-            console.log(pages);
         }
         return pages;
     }
     
     render() {
-        if (this.props.page_count > 0) {
-            var pages = this.getPagesArray();
-            console.log(pages);
-            return <ul id={this.props.list_id}>
-                {pages.map((function (m, index) {
-                    if (m != this.props.page) {
-                        return <li><a href="#" data-page={m}>{m}</a></li>;
-                    } else {
-                    return <li><span className="current_page">{m}</span></li>;
-                    }
-                }).bind(this))}
-            </ul>;
+        if (this.props.page_count < 2) {
+            return '';
         }
+        
+        var pages = this.getPagesArray();
+        return <ul id={this.props.list_id} className="pagination">
+            {pages.map((function (m, index) {
+                if (m != this.props.page) {
+                    return <li><a href="#" data-page={m}>{m}</a></li>;
+                } else {
+                return <li className="active"><a href="#" data-page={m}>{m}</a></li>;
+                }
+            }).bind(this))}
+        </ul>;
     }
 }
 
 ReactDOM.render(
-    <Books config={ {'api_url': 'https://php7.docwriter.ru/k-gorod/api/web/api/v1/books?per-page=2'} } />,
+    <Books config={ booksConfig } />,
     document.getElementById('books-container')
 );

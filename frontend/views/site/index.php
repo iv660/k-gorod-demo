@@ -17,15 +17,4 @@ $this->title = 'Demo Application';
     </div>
 
 </div>
-<script type="text/babel">
-    alert('@@');
-    var Books = React.createClass({
-        render: function() {
-            return <p>Rendered successfully.</p>
-        }
-    });
-    ReactDOM.render(
-    <Books items={ ['Home', 'Services', 'About', 'Contact us'] } />,
-    document.getElementById('example')
-);
-</script>
+

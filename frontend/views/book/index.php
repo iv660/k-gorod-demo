@@ -1,6 +1,7 @@
 <?php
 
 use frontend\assets\BooksJsxAsset;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 
@@ -16,4 +17,10 @@ $this->title = Yii::t('app', 'Books Directory');
         <div id="books-container"><?= Yii::t('app', 'Loading...') ?></div>
     </div>
 </div>
-
+<?php 
+$this->registerJs(<<<JS
+    booksConfig = {api_url: 'https://php7.docwriter.ru/k-gorod/api/web/api/v1/books'};
+JS
+    ,
+    View::POS_HEAD);
+?>
