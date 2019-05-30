@@ -21,11 +21,7 @@ $this->title = Yii::t('app', 'Books Directory');
 
 <?php 
 // Build API URL
-$apiUrl = Yii::$app->urlManager->createAbsoluteUrl('');
-$rootDir = '/frontend/';
-$rootPosition = strpos($apiUrl, $rootDir);
-$rootLength = strlen($rootDir);
-$apiUrl = substr($apiUrl, 0, $rootPosition) . '/api/web/' . Url::to('api/v1/books');
+$apiUrl = Yii::$app->params['booksApiEndpoint'] ?? Url::to('@web/../../api/web/api/v1/books', true);
 
 $this->registerJs(<<<JS
     booksConfig = {api_url: '{$apiUrl}'};
