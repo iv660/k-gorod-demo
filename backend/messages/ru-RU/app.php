@@ -31,4 +31,8 @@ return [
     'Update' => 'Редактировать',
     'Update Chapter' => 'Редактирование главы',
     'Update Chapter: {name}' => 'Редактирование главы: {name}',
+    'Please fill out the following fields to login (use <code>admin/admin</code> for the purposes of demonstration):' => 'Для входа в систему заполните следующие поля (для демонстрационного входа используйте параметры учетной записи <code>admin/admin</code>):',
+    'Login' => 'Вход',
+    'Home' => 'Главная',
+    'Logout ({user})' => 'Выход ({user})',
 ];

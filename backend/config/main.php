@@ -46,6 +46,26 @@ return [
             ],
         ],
         */
+   ],
+    'as beforeRequest' => [
+        'class' => 'yii\filters\AccessControl',
+        'rules' => [
+            [
+                'controllers' => ['site'],
+                'actions' => ['login', 'error', 'index'],
+                'allow' => true,
+            ],
+            [
+                'controllers' => ['site'],
+                'actions' => ['logout'],
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
     ],
     'params' => $params,
 ];
