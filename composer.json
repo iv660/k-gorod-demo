@@ -1,6 +1,7 @@
 {
     "name": "iv660/k-gorod-demo",
-    "description": "Demo application for KGorod.",
+    "description": "Demo application for KGorod.", 
+    "version": "3.1.1",
     "keywords": ["yii2", "kgorod", "demo"],
     "homepage": "https://php7.docwriter.ru/k-gorod/frontend/web/",
     "type": "project",
