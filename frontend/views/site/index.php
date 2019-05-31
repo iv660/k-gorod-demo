@@ -13,8 +13,12 @@ $this->title = 'Demo Application';
 
         <p class="lead">Демонстрационное приложение готово к работе.</p>
 
-        <p><a class="btn btn-lg btn-success" href="<?= Url::to(['/book']) ?>">В каталог книг</a></p>
     </div>
 
+    <?php require(Yii::getAlias('@common/views/site/_description.php')); ?>
+    
+    <div class="jumbotron">
+        <p><a class="btn btn-lg btn-success" href="<?= Url::to(['/book']) ?>">В каталог книг</a></p>
+    </div>
 </div>
 
