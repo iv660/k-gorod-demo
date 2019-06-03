@@ -27,8 +27,8 @@
             <li><strong>Автоматизация</strong>. Для формирования языковых файлов и миграций использовались встроенные в Yii2 средства автоматизации (<code>yii migrate/create</code>, <code>yii message</code>).</li>
             <li><strong>REST API</strong>. Выполнен в виде отдельного приложения <code>api</code>. Используется для динамического формирования списка книг (см. ниже). Конечная точка API: <code>https://your_api_server/api/v1/books</code></li>
             <li><strong>ReactJS</strong>. Формирование списка книг с навигацией по страницам на <a href="../../frontend/web">фронт-энде приложения</a>.</li>
-            <li><strong>Composer.</strong> Возможна установка и обновление приложения из стандартного репоизтория Composer Packagist.</li>
-            <li><strong>Github.</strong>Исходный код проекта доступен на <a href="https://github.com/iv660/k-gorod-demo/">GitHub</a></li>
+            <li><strong>Composer.</strong> Возможна установка приложения из стандартного репоизтория Composer Packagist.</li>
+            <li><strong>Github.</strong> Исходный код проекта доступен на <a href="https://github.com/iv660/k-gorod-demo/">GitHub</a>.</li>
         </ul>
 
     </div>
